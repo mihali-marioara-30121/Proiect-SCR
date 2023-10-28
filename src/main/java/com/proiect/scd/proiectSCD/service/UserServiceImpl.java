@@ -1,7 +1,9 @@
 package com.proiect.scd.proiectSCD.service;
 
 import com.proiect.scd.proiectSCD.entity.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService{
     @Override
     public User findUserById(Long id) {

@@ -1,9 +1,10 @@
 package com.proiect.scd.proiectSCD.service;
 
 import com.proiect.scd.proiectSCD.entity.Employee;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee findEmployeeById(Long id) {

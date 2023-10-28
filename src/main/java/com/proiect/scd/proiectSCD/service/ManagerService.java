@@ -5,7 +5,7 @@ import java.util.List;
 public interface ManagerService {
     Manager findManagerById(Long id);
 
-    Manager saveManagere(Manager manager);
+    Manager saveManager(Manager manager);
 
     boolean deleteManagerById(Long id);
 

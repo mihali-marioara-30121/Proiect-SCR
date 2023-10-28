@@ -8,6 +8,7 @@ import java.util.List;
 public interface DepartamentService {
 
     Departament findDepartamentById(Long id);
+    Departament findDepartamentByName(String departamentName);
 
     Departament saveDepartament(Departament departament);
 

@@ -1,9 +1,10 @@
 package com.proiect.scd.proiectSCD.service;
 
 import com.proiect.scd.proiectSCD.entity.Manager;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ManagerServiceImpl implements ManagerService{
     @Override
     public Manager findManagerById(Long id) {
@@ -11,7 +12,7 @@ public class ManagerServiceImpl implements ManagerService{
     }
 
     @Override
-    public Manager saveManagere(Manager manager) {
+    public Manager saveManager(Manager manager) {
         return null;
     }
 
