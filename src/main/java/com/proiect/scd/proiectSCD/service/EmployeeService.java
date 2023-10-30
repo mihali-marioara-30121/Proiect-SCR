@@ -12,7 +12,7 @@ public interface EmployeeService {
 
     boolean deleteEmployeeById(Long id);
 
-    Employee findEmployeeByDepartament(String departamentName);
+    List<Employee> getAllEmployeeByManager(String managerName);
 
     List<Employee> getAllEmployeesByDepartament(String departament);
 
