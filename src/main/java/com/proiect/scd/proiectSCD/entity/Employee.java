@@ -15,20 +15,20 @@ public class Employee {
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "departament_id")
-    @JsonIgnoreProperties("employees") // Add this line to ignore cyclic references
-    private Departament departament;
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
     @JsonIgnoreProperties("employees") // Add this line to ignore cyclic references
-    private Manager manager;
+    private Employee manager;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    @JsonIgnoreProperties("employees") // Add this line to ignore cyclic references
+    private Department department;
 
 }

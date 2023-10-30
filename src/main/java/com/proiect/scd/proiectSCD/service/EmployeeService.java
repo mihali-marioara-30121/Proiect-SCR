@@ -12,8 +12,6 @@ public interface EmployeeService {
 
     boolean deleteEmployeeById(Long id);
 
-    List<Employee> getAllEmployeeByManager(String managerName);
-
-    List<Employee> getAllEmployeesByDepartament(String departament);
+    List<Employee> getAllEmployeesByDepartment(String department);
 
 }

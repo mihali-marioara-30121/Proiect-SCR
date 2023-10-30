@@ -33,18 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getAllEmployeeByDepartament(String departamentName) {
-        return employeeRepository.findByDepartamentName(departamentName);
-    }
-
-    @Override
-    public List<Employee>getAllEmployeeByManager(String managerName) {
-        return null;
-    }
-
-
-    @Override
-    public List<Employee> getAllEmployeesByDepartament(String departament) {
-        return null;
+    public List<Employee> getAllEmployeesByDepartment(String department) {
+        return employeeRepository.findByDepartmentName(department);
     }
 }
