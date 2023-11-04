@@ -1,5 +1,7 @@
 package com.proiect.scd.proiectSCD.service;
 
+import com.proiect.scd.proiectSCD.dtos.UserDTO;
+import com.proiect.scd.proiectSCD.entity.Role;
 import com.proiect.scd.proiectSCD.entity.User;
 import com.proiect.scd.proiectSCD.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +35,14 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public User mapDTOtoUser(UserDTO userDTO) {
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setRole(Role.valueOf(userDTO.getRoleName()));
+
+        return user;
     }
 }
