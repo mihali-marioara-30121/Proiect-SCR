@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
+@SuppressWarnings("unused")
 public class EmailServiceImpl implements EmailService {
     @Override
     public boolean sendEmail(List<Employee> employeeList) throws MailjetException {

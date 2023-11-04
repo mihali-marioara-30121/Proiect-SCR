@@ -1,6 +1,5 @@
 package com.proiect.scd.proiectSCD.service;
 
-import com.proiect.scd.proiectSCD.dtos.DepartmentDTO;
 import com.proiect.scd.proiectSCD.entity.Department;
 
 import java.util.List;
@@ -14,6 +13,5 @@ public interface DepartmentService {
 
     boolean deleteDepartmentById (Long id);
 
-    List<DepartmentDTO> getAllDepartments();
-
+    List<Department> getAllDepartments();
 }

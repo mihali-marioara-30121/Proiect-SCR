@@ -1,5 +1,6 @@
 package com.proiect.scd.proiectSCD.service;
 
+import com.proiect.scd.proiectSCD.dtos.EmployeeDTO;
 import com.proiect.scd.proiectSCD.entity.Employee;
 
 import java.util.List;
@@ -12,8 +13,10 @@ public interface EmployeeService {
 
     boolean deleteEmployeeById(Long id);
 
-    List<Employee> getAllEmployeesByDepartment(String department);
+    List<Employee> getAllEmployeesPerDepartment(String department);
 
-    List<Employee> getAllManagersByDepartment(String department);
+    List<Employee> getAllManagersPerDepartment(String department);
+
+    Employee mapDTOtoEntity(EmployeeDTO employeeDTO);
 
 }

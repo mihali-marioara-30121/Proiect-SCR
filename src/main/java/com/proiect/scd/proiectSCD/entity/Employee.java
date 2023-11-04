@@ -23,12 +23,12 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
-    @JsonIgnoreProperties("employee") // Add this line to ignore cyclic references
+    @JsonIgnoreProperties("manager") // Ignore cyclic references for the 'manager' property
     private Employee manager;
 
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
-    @JsonIgnoreProperties("employee") // Add this line to ignore cyclic references
+    @JsonIgnoreProperties("employees") // Add this line to ignore cyclic references
     private Department department;
 
 }

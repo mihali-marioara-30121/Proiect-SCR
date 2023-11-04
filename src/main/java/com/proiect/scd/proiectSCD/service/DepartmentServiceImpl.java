@@ -1,6 +1,5 @@
 package com.proiect.scd.proiectSCD.service;
 
-import com.proiect.scd.proiectSCD.dtos.DepartmentDTO;
 import com.proiect.scd.proiectSCD.entity.Department;
 import com.proiect.scd.proiectSCD.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
@@ -24,8 +23,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department findDepartmentByName(String departamentName) {
-        return departmentRepository.findByName(departamentName);
+    public Department findDepartmentByName(String departmentName) {
+        return departmentRepository.findByName(departmentName);
     }
 
     @Override
@@ -35,19 +34,24 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public boolean deleteDepartmentById(Long id) {
-        if (findDepartmentById(id)!=null){
+        if (findDepartmentById(id) != null){
+            // stergerea subdepartamentelor
+            deleteSubdepartmentsIfTheyExist(id);
             departmentRepository.deleteById(id);
             return true;
         }
         return false;
     }
 
-    @Override
-    public List<DepartmentDTO> getAllDepartments() {
-        List<Department> departments = departmentRepository.findAll();
+    private void deleteSubdepartmentsIfTheyExist(Long parentId) {
+        List<Department> subdepartmentsList = departmentRepository.findByParentDepartmentId(parentId);
+        for (Department subdepartement: subdepartmentsList) {
+            departmentRepository.deleteById(subdepartement.getId());
+        }
+    }
 
-        return departments.stream()
-                .map(department -> new DepartmentDTO(department.getId(), department.getName(), department.getDescription()))
-                .collect(Collectors.toList());
+    @Override
+    public List<Department> getAllDepartments() {
+        return departmentRepository.findAll();
     }
 }
