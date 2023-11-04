@@ -1,4 +1,4 @@
-package com.proiect.scd.proiectSCD.Role;
+package com.proiect.scd.proiectSCD.entity;
 
 public enum Role {
     ADMIN,

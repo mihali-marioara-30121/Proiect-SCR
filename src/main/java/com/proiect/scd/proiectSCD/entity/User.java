@@ -1,6 +1,5 @@
 package com.proiect.scd.proiectSCD.entity;
 
-import com.proiect.scd.proiectSCD.Role.Role;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -33,7 +32,7 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private Role role;
 
     @Override
