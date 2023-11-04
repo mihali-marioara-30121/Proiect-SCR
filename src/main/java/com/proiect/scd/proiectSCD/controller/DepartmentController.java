@@ -1,5 +1,6 @@
 package com.proiect.scd.proiectSCD.controller;
 
+import com.proiect.scd.proiectSCD.dtos.DepartmentDTO;
 import com.proiect.scd.proiectSCD.entity.Department;
 import com.proiect.scd.proiectSCD.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
@@ -43,14 +44,15 @@ public class DepartmentController {
         return ResponseEntity.ofNullable(departmentService.saveDepartment(department));
     }
 
-    // TESTAT - important de verficat mai tarziu
+    // TESTAT
     @PutMapping("/{id}")
-    public ResponseEntity<Department> updateDepartment(@PathVariable Long id, @RequestBody Department department){
+    public ResponseEntity<Department> updateDepartment(@PathVariable Long id, @RequestBody DepartmentDTO departmentDTO){
+        Department department = departmentService.mapDTOtoDepartment(departmentDTO);
         department.setId(id);
         return ResponseEntity.ofNullable(departmentService.saveDepartment(department));
     }
 
-    // TESTAT - dar va mai trebui modificat sa se stearga si angajatii ce tin de un departament
+    // TESTAT
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteDepartment(@PathVariable Long id){
         boolean deletedSuccessfully = departmentService.deleteDepartmentById(id);

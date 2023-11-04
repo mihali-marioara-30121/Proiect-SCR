@@ -1,5 +1,6 @@
 package com.proiect.scd.proiectSCD.service;
 
+import com.proiect.scd.proiectSCD.dtos.DepartmentDTO;
 import com.proiect.scd.proiectSCD.entity.Department;
 import com.proiect.scd.proiectSCD.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
@@ -53,5 +54,19 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public List<Department> getAllDepartments() {
         return departmentRepository.findAll();
+    }
+
+    @Override
+    public Department mapDTOtoDepartment(DepartmentDTO departmentDTO) {
+        Department department = new Department();
+        department.setName(departmentDTO.getName());
+        department.setDescription(departmentDTO.getDescription());
+
+        if (departmentDTO.getParentDepartmentId() > 0) {
+            Department parent = departmentRepository.findById(departmentDTO.getParentDepartmentId()).orElse(null);
+            department.setParentDepartment(parent);
+        }
+
+        return department;
     }
 }
