@@ -1,27 +1,37 @@
 package com.proiect.scd.proiectSCD.service;
 
 import com.proiect.scd.proiectSCD.entity.User;
+import com.proiect.scd.proiectSCD.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserRepository userRepository;
     @Override
     public User findUserById(Long id) {
-        return null;
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
     public User findUserByUsername(String username) {
-        return null;
+        return userRepository.findByUsername(username).orElse(null);
     }
 
     @Override
     public User saveUser(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
     @Override
     public boolean deleteUserById(Long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return true;
+        }
+
         return false;
     }
 }
