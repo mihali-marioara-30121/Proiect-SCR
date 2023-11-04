@@ -15,8 +15,8 @@ public class ProiectScdApplication {
 
 	public static void main(String[] args) throws MailjetException {
 		SpringApplication.run(ProiectScdApplication.class, args);
-		EmailServiceImpl emailService1 = new EmailServiceImpl();
-		emailService1.sendEmail(null);
+		//EmailServiceImpl emailService1 = new EmailServiceImpl();
+		//emailService1.sendEmail(null);
 	}
 
 }
