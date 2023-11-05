@@ -5,6 +5,7 @@ import com.proiect.scd.proiectSCD.entity.Role;
 import com.proiect.scd.proiectSCD.entity.User;
 import com.proiect.scd.proiectSCD.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +21,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByUsername(String username) {
-        return userRepository.findByUsername(username).orElse(null);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found!"));
     }
 
     @Override

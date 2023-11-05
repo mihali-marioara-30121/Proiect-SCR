@@ -10,13 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ProiectScdApplication {
 
-	@Autowired
-	private EmailService emailService;
-
-	public static void main(String[] args) throws MailjetException {
+	public static void main(String[] args) {
 		SpringApplication.run(ProiectScdApplication.class, args);
-		//EmailServiceImpl emailService1 = new EmailServiceImpl();
-		//emailService1.sendEmail(null);
 	}
 
 }
