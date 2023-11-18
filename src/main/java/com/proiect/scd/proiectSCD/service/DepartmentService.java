@@ -1,6 +1,7 @@
 package com.proiect.scd.proiectSCD.service;
 
 import com.proiect.scd.proiectSCD.dtos.DepartmentDTO;
+import com.proiect.scd.proiectSCD.dtos.DepartmentVO;
 import com.proiect.scd.proiectSCD.entity.Department;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface DepartmentService {
     List<Department> getAllDepartments();
 
     Department mapDTOtoDepartment(DepartmentDTO departmentDTO);
+
+    List<Department> getAllChildDepartmentsOfDepartment(DepartmentVO departmentVO);
 }

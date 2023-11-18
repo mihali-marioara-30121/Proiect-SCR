@@ -1,6 +1,7 @@
 package com.proiect.scd.proiectSCD.controller;
 
 import com.proiect.scd.proiectSCD.dtos.DepartmentDTO;
+import com.proiect.scd.proiectSCD.dtos.DepartmentVO;
 import com.proiect.scd.proiectSCD.entity.Department;
 import com.proiect.scd.proiectSCD.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,24 @@ public class DepartmentController {
     @GetMapping("/all")
     public ResponseEntity<List<Department>> getAllDepartments(){
         return ResponseEntity.ofNullable(departmentService.getAllDepartments());
+    }
+
+    // NE=TESTAT
+    @GetMapping("/allParentDepartments")
+    public ResponseEntity<List<DepartmentVO>> getAllParentDepartments(){
+        List<Department> departmentList = departmentService.getAllDepartments();
+        List<Department> headDepartments = departmentList
+                .stream()
+                .filter(department -> department.getParentDepartment() == null)
+                .toList();
+
+        List<DepartmentVO> departmentVOS = DepartmentVO.convertDepartmentListToDepartmentVOList(headDepartments);
+        for (DepartmentVO departmentVO: departmentVOS) {
+            List<Department> childOfCurrentDepartment = departmentService.getAllChildDepartmentsOfDepartment(departmentVO);
+            departmentVO.setChildDepartments(childOfCurrentDepartment);
+        }
+
+        return ResponseEntity.ofNullable(departmentVOS);
     }
 
     // TESTAT
@@ -61,5 +80,4 @@ public class DepartmentController {
         }
         return new ResponseEntity<>("Department id not found!", HttpStatus.BAD_REQUEST);
     }
-
 }

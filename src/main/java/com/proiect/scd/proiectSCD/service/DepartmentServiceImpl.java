@@ -1,11 +1,12 @@
 package com.proiect.scd.proiectSCD.service;
 
 import com.proiect.scd.proiectSCD.dtos.DepartmentDTO;
+import com.proiect.scd.proiectSCD.dtos.DepartmentVO;
 import com.proiect.scd.proiectSCD.entity.Department;
 import com.proiect.scd.proiectSCD.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 
 @Service
@@ -68,5 +69,14 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
 
         return department;
+    }
+
+    @Override
+    public List<Department> getAllChildDepartmentsOfDepartment(DepartmentVO departmentVO) {
+        List<Department> allDepartments =  departmentRepository.findAll();
+        return allDepartments.stream()
+                .filter(department -> department.getParentDepartment() != null)
+                .filter(department -> Objects.equals(department.getParentDepartment().getId(), departmentVO.getId()))
+                .toList();
     }
 }
